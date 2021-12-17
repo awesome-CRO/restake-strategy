@@ -19,6 +19,9 @@ class RewardAnalyzer:
             total_amount_list.append(total_amount)
         return total_amount_list
 
+    def compute_baseline_final_amount(self) -> float:
+        return self.init_amount * (1.0 + self.rate)
+
     def compute_total_amount_with_interval_length(
             self, interval_length: float) -> float:
         cycles = int(self.annual_length / interval_length)
@@ -27,6 +30,12 @@ class RewardAnalyzer:
             interval_reward = self.compute_interval_reward(
                 current_amount, interval_length)
             current_amount += (interval_reward - self.cost)
+        if cycles * interval_length < self.annual_length:
+            remain_reward = self.compute_interval_reward(
+                current_amount, self.annual_length - cycles * interval_length)
+            current_amount += remain_reward
+        # This is for finally taking the money out from staking.
+        current_amount -= self.cost
         return current_amount
 
     def compute_interval_reward(self, current_amount: float,

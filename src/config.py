@@ -11,6 +11,7 @@ class StakingConfig:
         self.init_amount = init_amount
         self.restake_cost = restake_cost
         self.staking_reward_rate = staking_reward_rate
+        self.ready = False
 
 
 class StakingConfigSingleton:
