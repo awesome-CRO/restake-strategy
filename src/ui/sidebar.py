@@ -12,3 +12,4 @@ def render_sidebar():
     config.init_amount = init_amount
     config.staking_reward_rate = staking_reward_rate
     config.restake_cost = restake_cost
+    start_analysis = st.sidebar.button('Done')
