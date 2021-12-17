@@ -1,3 +1,3 @@
-import streamlit as st
+from src.ui.header import render_header
 
-st.title('CRO Staking Strategy')
+render_header()
