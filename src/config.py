@@ -8,9 +8,9 @@ class StakingConfig:
                  init_amount=DEFAULT_INIT_AMOUNT,
                  restake_cost=DEFAULT_RESTAKE_COST,
                  staking_reward_rate=DEFAULT_STAKING_REWARD_RATE) -> None:
-        self._init_amount = init_amount
-        self._restake_cost = restake_cost
-        self._staking_reward_rate = staking_reward_rate
+        self.init_amount = init_amount
+        self.restake_cost = restake_cost
+        self.staking_reward_rate = staking_reward_rate
 
 
 class StakingConfigSingleton:
