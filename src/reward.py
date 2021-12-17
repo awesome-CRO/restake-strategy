@@ -24,11 +24,13 @@ class RewardAnalyzer:
         cycles = int(self.annual_length / interval_length)
         current_amount = self.init_amount
         for _ in range(cycles):
-            interval_reward = self.compute_interval_reward(interval_length)
+            interval_reward = self.compute_interval_reward(
+                current_amount, interval_length)
             current_amount += (interval_reward - self.cost)
         return current_amount
 
-    def compute_interval_reward(self, interval_length: float) -> float:
-        annual_reward = self.current_amount * self.rate
+    def compute_interval_reward(self, current_amount: float,
+                                interval_length: float) -> float:
+        annual_reward = current_amount * self.rate
         interval_reward = annual_reward * interval_length / self.annual_length
         return interval_reward
