@@ -8,6 +8,7 @@ class RewardAnalyzer:
         self.current_amount = StakingConfigSingleton.get().init_amount
         self.rate = StakingConfigSingleton.get().staking_reward_rate
         self.cost = StakingConfigSingleton.get().restake_cost
+        self.annual_length = 365.0
 
     def compute_possible_rewards(self,
                                  interval_range: List[float]) -> List[float]:
@@ -17,4 +18,6 @@ class RewardAnalyzer:
         return 0
 
     def _compute_interval_reward(self, interval_length: float) -> float:
-        return 0
+        annual_reward = self.current_amount * self.rate
+        interval_reward = annual_reward * interval_length / self.annual_length
+        return interval_reward
